@@ -35,3 +35,6 @@ UI notes
 - `Services/ActivityLogger.cs` — in-memory logger service.
 - `ActivityLogWindow.xaml(.cs)` — activity logger GUI.
 - `TaskJsonViewer.xaml(.cs)` — in-app viewer for `tasks.json`.
+
+
+stay tuned for more updates
