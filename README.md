@@ -36,5 +36,9 @@ UI notes
 - `ActivityLogWindow.xaml(.cs)` — activity logger GUI.
 - `TaskJsonViewer.xaml(.cs)` — in-app viewer for `tasks.json`.
 
+## Screenshot of passed workflow
+<img width="988" height="325" alt="image" src="https://github.com/user-attachments/assets/76598047-6165-4c2f-b40b-c8ff0c5e38f3" />
 
 stay tuned for more updates
+
+## Features
