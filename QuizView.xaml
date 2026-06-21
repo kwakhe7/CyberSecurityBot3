@@ -1,0 +1,77 @@
+<UserControl x:Class="ChatbotPart2.QuizView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ChatbotPart2"
+             MinWidth="420" MinHeight="360">
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="PrimaryButton">
+            <Setter Property="Background" Value="#1E88E5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem" x:Key="OptionItem">
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#E3F2FD"/>
+                    <Setter Property="BorderBrush" Value="#90CAF9"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#BBDEFB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Stretch">
+            <Button Content="Start Quiz" Command="{Binding StartCommand}" Style="{StaticResource PrimaryButton}" Width="110"/>
+            <TextBlock Text="{Binding QuestionCounter}" VerticalAlignment="Center" FontWeight="Bold" Margin="8,0,0,0"/>
+            <TextBlock Text=" " HorizontalAlignment="Stretch"/>
+            <TextBlock Text="{Binding FinalSummary}" VerticalAlignment="Center" Foreground="DarkGreen" Margin="12,0,0,0" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Padding="8" Margin="0,8,0,8" Background="#FAFAFA" CornerRadius="6">
+            <StackPanel>
+                <TextBlock Text="{Binding CurrentQuestionText}" FontWeight="Bold" TextWrapping="Wrap" FontSize="14"/>
+                <StackPanel Orientation="Horizontal" Margin="0,8,0,0" VerticalAlignment="Center">
+                    <ProgressBar Width="180" Height="12" Value="{Binding TimeRemainingSeconds, Mode=OneWay}" Maximum="{Binding TimePerQuestionSeconds}" />
+                    <TextBlock Text="{Binding TimeRemainingText}" Margin="8,0,0,0" VerticalAlignment="Center" FontFamily="Consolas"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <ListBox Grid.Row="2" ItemsSource="{Binding Options}" SelectedIndex="{Binding SelectedOptionIndex, Mode=TwoWay}" Margin="0,0,0,8" ItemContainerStyle="{StaticResource OptionItem}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,8">
+            <Button Content="Submit" Command="{Binding SubmitCommand}" Style="{StaticResource PrimaryButton}" Width="100"/>
+            <TextBlock Text="{Binding Feedback}" Margin="12,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="4" Text="Use Start to begin. You have a limited time per question — unanswered questions auto-submit when time runs out." FontStyle="Italic" Foreground="Gray"/>
+    </Grid>
+</UserControl>
