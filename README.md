@@ -26,3 +26,12 @@ UI notes
 - Use `Tasks` to add tasks. They are saved automatically to disk.
 - Click `Tasks JSON` to view the underlying JSON file in-app.
 - Click `Activity Log` to inspect recent actions (clear/copy supported).
+
+
+- `MainWindow.xaml(.cs)` — main UI and wiring to services.
+- `TaskView.xaml(.cs)` — task manager UI and converters.
+- `TaskManager.cs` — ViewModel for task UI (uses `TaskStorageHelper`).
+- `TaskStorageHelper.cs` — persistent JSON task storage (thread-safe).
+- `Services/ActivityLogger.cs` — in-memory logger service.
+- `ActivityLogWindow.xaml(.cs)` — activity logger GUI.
+- `TaskJsonViewer.xaml(.cs)` — in-app viewer for `tasks.json`.
