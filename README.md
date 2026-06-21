@@ -20,3 +20,9 @@ Open and run
 - Or from a terminal:
   - dotnet build
   - dotnet run --project ChatbotPart2.csproj
+
+UI notes
+- The header contains mode buttons (`Chat`, `Quiz`, `Tasks`) plus `Activity Log` and `Tasks JSON`.
+- Use `Tasks` to add tasks. They are saved automatically to disk.
+- Click `Tasks JSON` to view the underlying JSON file in-app.
+- Click `Activity Log` to inspect recent actions (clear/copy supported).
